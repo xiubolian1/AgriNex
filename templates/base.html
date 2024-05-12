@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% block head %}{% endblock %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='layui/css/layui.css') }}">
+    <script src="{{ url_for("static",filename='layui/layui.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="layui-layout  layui-layout-admin">
+    <div class="layui-header  layui-bg-green " >
+        <!-- 导航栏 -->
+        <ul class="layui-nav layui-bg-green layui-layout-left" lay-filter="">
+            <li class="layui-nav-item"  style="font-size: 15px; "><p style="font-family: 宋体;color:#CD5555;text-align: left"><b>果树智能分析系统 </b> </p></li>
+            {% block nav %}
+
+            {% endblock %}
+            {##}
+            {#            <li class="layui-nav-item">#}
+            {#                <a href="javascript:;">解决方案</a>#}
+            {#                <dl class="layui-nav-child"> <!-- 二级菜单 -->#}
+            {#                    <dd><a href="">移动模块</a></dd>#}
+            {#                    <dd><a href="">后台模版</a></dd>#}
+            {#                </dl>#}
+            {#            </li>#}
+        </ul>
+
+
+
+
+
+        <ul class="layui-nav layui-bg-green layui-layout-right">
+            {% if user %}
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+
+                        <img src="avatar/{{ user.avatar }}"
+                             class="layui-nav-img">
+                        {{ user.username }}
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="{{ url_for('auth.personal_center') }}">个人中心</a></dd>
+                        <dd><a href="{{ url_for('auth.change_pwd') }}">修改密码</a></dd>
+                        {#                        <dd><a  href="{{ url_for('auth.logout') }}">退出登录</a></dd>#}
+                        <dd><a id="logout-btn" href="#">退出登录</a></dd>
+                    </dl>
+                </li>
+            {% else %}
+                <li class="layui-nav-item"><a href="{{ url_for('auth.login') }}">登录</a></li>
+                <li class="layui-nav-item"><a href="{{ url_for('auth.register') }}">注册</a></li>
+                <a href="{{ url_for('auth.register') }} " id="logout-btn" hidden="hidden">注册</a>
+            {% endif %}
+        </ul>
+    </div>
+
+    {% block body %}{% endblock %}
+
+
+    <footer class="layui-footer">
+        <div class="layui-container">
+            <div class="layui-text-center layui-text" style="text-align: center;font-size: 15px">
+                {#                <p> © 2024 安徽农业大学&nbsp; &nbsp;信息与人工智能学院版权所有&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 联系方式 :#}
+                {#                    2650862699@qq.com </p>               #}
+                <p> © 2024 安徽农业大学&nbsp; &nbsp;信息与人工智能学院版权所有</p>
+            </div>
+
+        </div>
+    </footer>
+</div>
+<script>
+    // 折叠用户信息导航
+    layui.use('element', function () {
+        var element = layui.element;
+        element.init();
+    });
+
+</script>
+{% block footer %}{% endblock %}
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<script>
+    const logoutBtn = document.getElementById('logout-btn');
+    logoutBtn.addEventListener('click', function () {
+        layer.confirm('确定要退出吗？', {
+            btn: ['确定', '取消'] //可以无限个按钮
+
+        }, function (index, layero) {
+            //按钮【按钮一】的回调
+            fetch('auth/logout', {
+                method: 'GET',
+
+            }).then(response => {
+                // 处理响应
+                console.log(response)
+                layer.msg('退出成功！');
+                setTimeout(function () {
+                    window.location.href="{{ url_for('zy.index') }}";
+                    // 时间间隔
+                }, 1000);
+
+
+            }).catch(error => {
+                // 处理错误
+                console.error(error);
+            });
+        }, function (index) {
+            layer.msg('取消')
+            //按钮【按钮二】的回调
+        });
+    });
+
+</script>
+</body>
+</html>

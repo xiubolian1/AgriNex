@@ -1,0 +1,160 @@
+﻿
+<html>
+<head>
+    <meta charset="utf-8" />
+    
+    <title>果树数据展示分析平台</title>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/comon0.css') }}" />
+</head>
+<body>
+<div class="loading">
+    <div class="loadbox">
+        <img src="{{ url_for('static', filename='img/loading.gif') }}" /> 页面加载中...
+    </div>
+</div>
+<div class="head">
+    <h1><a>果树数据展示分析平台</a></h1>
+    <div class="time" id="showTime">
+        2019/12/05 16:16:54
+    </div>
+    <script>
+        var t = null;
+        t = setTimeout(time,1000);//開始运行
+        function time()
+        {
+            clearTimeout(t);//清除定时器
+            dt = new Date();
+            var y=dt.getFullYear();
+            var mt=dt.getMonth()+1;
+            var day=dt.getDate();
+            var h=dt.getHours();//获取时
+            var m=dt.getMinutes();//获取分
+            var s=dt.getSeconds();//获取秒
+            var t = null;
+            document.getElementById("showTime").innerHTML = y+"/"+Appendzero(mt)+"/"+Appendzero(day)+"  ";
+            function Appendzero(obj){
+                if(obj<10) return "0" +""+ obj;
+                else return obj;
+            }
+            // t = setTimeout(time,1000); //设定定时器，循环运行
+        }
+
+    </script>
+</div>
+<div class="mainbox">
+    <ul class="clearfix">
+        <li>
+            <div class="boxall" style="height: calc(58% - .15rem)">
+                <div class="alltitle">
+                    种植相关企业数量
+                </div>
+                <div class=" boxnav " id="echarts4">
+                </div>
+            </div>
+            <div class="boxall" style="height: calc(42% - .15rem)">
+                <div class="alltitle">
+                   进出口矩形图
+                </div>
+                <div class="boxnav" id="echarts3"></div>
+            </div> </li>
+        <li>
+            <div class="boxall" style="height: calc(20% - .15rem)">
+                <ul class="row h100 clearfix">
+
+                        <div class="sqzs h100">
+                            <p style="text-align: center">全年总产量</p>
+                            <h1>1926.53万吨</h1>
+                        </div>
+                    
+                </ul>
+            </div>
+            <div class="boxall" style="height: calc(38% - .15rem)">
+                <div class="alltitle">
+                    年产量变化趋势图
+                </div>
+                <div class="boxnav" id="echarts1"></div>
+            </div>
+            <div class="boxall" style="height: calc(42% - .15rem)">
+                <div class="alltitle">
+                    进出口曲线图
+                </div>
+                <div class="boxnav" id="echarts2"></div>
+            </div> </li>
+        <li>
+            <div class="boxall" style="height: calc(33.333% - .15rem)">
+                <div class="alltitle">
+                    表观消费量以及增长率展示
+                </div>
+                <div class="boxnav" id="echarts5"></div>
+            </div>
+            <div class="boxall" style="height: calc(33.333% - .15rem)">
+                <div class="alltitle">
+                    近几年种植面积（千公顷）
+                </div>
+                <div class="boxnav" id="">
+                    <table border="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <th></th>
+                            <th>2019</th>
+                            <th>2020</th>
+                            <th>2021</th>
+                            <th>2022</th>
+                           
+                        </tr>
+                        <tr>
+                            <th>安徽省</th>
+                            <td>160.268</td>
+                            <td>166.288</td>
+                            <td>168.494</td>
+                            <td>167.617</td>
+                        </tr>
+                        <tr>
+                            <th>甘肃省</th>
+                            <td>318.992</td>
+                            <td>326.660</td>
+                            <td>328.304</td>
+                            <td>332.228</td>
+                        </tr>
+                        <tr>
+                            <th>广西省</th>
+                            <td>1331.884</td>
+                            <td>1352.566</td>
+                            <td>1389.320</td>
+                            <td>1405.345</td>
+                        </tr>
+                        <tr>
+                            <th>贵州省</th>
+                            <td>684.495</td>
+                            <td>779.466</td>
+                            <td>802.141</td>
+                            <td>772.759</td>
+                        </tr>
+                        <tr>
+                            <th>河北省</th>
+                            <td>506.025</td>
+                            <td>521.608</td>
+                            <td>472.488</td>
+                            <td>473.737</td>
+                        </tr>
+
+
+
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="boxall" style="height: calc(33.333% - .15rem)">
+                <div class="alltitle">
+                    出口目的地分布情况
+                </div>
+                <div class="boxnav" id="echarts6" style="height:calc(100% - .3rem);"></div>
+            </div> </li>
+    </ul>
+</div>
+<script type="text/javascript" src="{{ url_for('static', filename='js/echarts.min.js') }}"></script>
+<script language="JavaScript" src="{{ url_for('static', filename='js/js.js') }}"></script>
+</body>
+</html>

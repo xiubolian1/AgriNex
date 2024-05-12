@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+    发布论坛
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block nav %}
+    <li class="layui-nav-item"><a href="/">主页</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('ident.class_upload') }}">上传</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('ident.class_record') }}">记录</a></li>
+    <li class="layui-nav-item   layui-this"><a href="{{ url_for('forum.record') }}">论坛</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="{{ url_for('forum.public_question') }}">发帖</a></dd>
+        </dl>
+    </li>
+{% endblock %}
+{% block body %}
+
+    <div class="layui-container" style="margin-top:2%">
+        <div class="layui-row">
+            <div class="layui-col-md10 layui-col-md-offset1">
+                <h1 style="text-align: center;" class=" layui-font-cyan ">发布论坛</h1>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <input type="text" name="title" class="layui-input" placeholder="请输入标题">
+                    </div>
+                    <div class="form-group">
+                        <textarea name="content" class="layui-textarea" rows="10" placeholder="请输入内容"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button class="layui-btn layui-btn-fluid" >发布</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}{{ question.title }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
+{% block nav %}
+    <li class="layui-nav-item"><a href="/">主页</a></li>
+    <li class="layui-nav-item "><a href="{{ url_for('ident.class_upload') }}">上传</a></li>
+    <li class="layui-nav-item "><a href="{{ url_for('ident.class_record') }}">记录</a></li>
+    <li class="layui-nav-item  layui-this"><a href="{{ url_for('forum.record') }}">论坛</a><dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="{{ url_for('forum.public_question') }}">发帖</a></dd>
+        </dl></li>
+{% endblock %}
+{% block body %}
+    <div class="layui-container " style="margin-top:2%">
+        <div class="layui-row">
+            <div class="layui-col-md10  layui-col-md-offset1 " style="background-color: #fff;padding: 20px;">
+                <h3 class="page-title">{{ question.title }}</h3>
+                <p class="question-info">
+                    <span class="layui-text"style="margin-right: 2%">作者：<span class="layui-text layui-font-blue">{{ question.author.username }}</span></span>
+                    <span class="layui-text">时间：{{ question.create_time }}</span>
+                </p>
+                <p class="question-content">{{ question.content }}</p>
+
+                <h4 class="comment-group-title" style="margin-top: 5%">评论（{{ question.answers|length }}）：</h4>
+                <form action="{{ url_for('forum.public_answer') }}" method="post">
+                    <div class="layui-form-item layui-form-text">
+                        <div class="layui-input-block">
+                            <textarea name="content" placeholder="请填写评论" class="layui-textarea"></textarea>
+                            <input type="hidden" name="question_id" value="{{ question.id }}">
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <button class="layui-btn layui-btn-normal" type="submit">评论</button>
+                    </div>
+                </form>
+                <ul class="comment-group">
+                    {% for answer in question.answers %}
+                        <li>
+                            <div class="user-info">
+                                    <img class="avatar" src=" avatar/{{answer.author.avatar}}" alt="{{ answer.author.username }}">
+
+                                <span class="username">{{ answer.author.username }}</span>
+                                <span class="create-time">{{ answer.create_time }}</span>
+                            </div>
+                            <p class="comment-content">{{ answer.content }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

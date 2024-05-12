@@ -1,0 +1,72 @@
+body {
+    padding-top: 60px;
+    background-color: #f3f3f3;
+}
+
+footer {
+    height: 100px;
+}
+
+
+td {
+    font-size: 20px;
+    text-align: center;
+    line-height: 150px;
+    vertical-align: middle;
+}
+
+td > img {
+
+    height: 300px;
+}
+
+.form-group {
+    margin-top: 3%;
+}
+
+.list-group-item {
+    background-color: #f2f2f2;
+    border: none;
+}
+
+.list-group-item:hover {
+    background-color: #e6e6e6;
+}
+
+.img-thumbnail:hover {
+    opacity: 0.8; /*透明度降低*/
+    transform: scale(1.5); /*缩小尺寸*/
+    transition-duration: 0.3s; /*悬停效果持续时间*/
+    cursor: pointer; /*鼠标指针变为手指*/
+}
+
+
+.img-show {
+    max-width: 200px;
+    max-height: 200px;
+    object-fit: contain;
+}
+
+.img-show:hover {
+    opacity: 0.9; /*透明度降低*/
+    transform: scale(1.1); /*缩小尺寸*/
+    transition-duration: 0.8s; /*悬停效果持续时间*/
+}
+
+.layui-table tr > th {
+    font-size: 15px;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+
+}
+
+.ivu-ml-8 {
+    margin-left: 8px !important;
+}
+.ivu-layout-header {
+    background: #515a6e;
+    padding: 0 50px;
+    height: 64px;
+    line-height: 64px
+}

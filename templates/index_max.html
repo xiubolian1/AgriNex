@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="zh-Hans">
+ <head> 
+  <meta charset="utf-8"> 
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"> 
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> 
+  <meta http-equiv="Cache-Control" content="no-siteapp"> 
+  <meta name="renderer" content="webkit"> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <meta name="SiteName" content="AgriNex :智慧果树病虫害综合分析平台">
+  <meta name="ColumnName" content="AgriNex :智慧果树病虫害综合分析平台">
+  <meta name="ColumnType" content="首页"> 
+  <title>AgriNex :智慧果树病虫害综合分析平台</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+  <meta name="baidu-site-verification" content="GTkvVzMYRi"> 
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/ETUI3.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery.ma.infinitypush.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2020.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style2020-medio.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='css/favicon.png') }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/share.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style2020-medio.css') }}">
+  <style>
+    
+    .pictuer-none .img-lub-bock{
+      display:none;
+    }
+    .pictuer-none .turn-btn{
+      bottom: 20px!important;
+    }
+    .normal-slider-bay{
+      width: 80px;
+    }
+    
+    .normal-slider-bay .owl-dots{
+      display: none;
+    }
+
+    .centered {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 10vh; /* 可根据需要调整容器的高度 */
+    }
+    
+  </style>
+ </head>  
+ <body class="desktop bg-box"> 
+  <div id="particles-js"></div>
+  <div id="accessNull"></div> 
+  <div id="container"> 
+   <script src="{{ url_for('static', filename='js/header.js') }}"></script>
+   <div class="contain trout-region-info"> 
+     <ul class="four-block-index">
+         <li class="piece-b">
+       <div class="bock01" name="Slider-3">
+        <i><img src="{{ url_for('static', filename='img/icon3.png') }}" alt="法人办事"></i>
+        <h3> <a href="{{ url_for('static', filename='other/test.apk') }}"  title="库塘监测大数据平台" target="_self" style="color: black">移动智能终端</a> </h3>
+        <p> <a href="{{ url_for('static', filename='other/test.apk') }}"  title="类别查询" target="_blank">类别查询</a><a href="{{ url_for('static', filename='other/test.apk') }}"  title="拍照识别" target="_blank">拍照识别</a> <a href="{{ url_for('static', filename='other/test.apk') }}"  title="本地识别" target="_blank">本地识别</a> <a href="{{ url_for('static', filename='other/test.apk') }}"  title="使用说明" target="_blank">使用说明</a>  </p>
+       </div>
+      <li class="piece-b"> 
+       <div class="bock01" name="Slider-1"> 
+        <i><img src="{{ url_for('static', filename='img/icon1.png') }}" alt="个人办事"></i>
+        <h3> <a href="{{ url_for('zy.index') }}" title="果树分析系统" target="_self" style="color: black">果树分析系统</a> </h3>
+        <p> <a href="{{ url_for('zy.index') }}" title="病害识别" target="_blank">病害识别</a> <a href="{{ url_for('zy.index') }}" title="熟度检测" target="_blank">熟度检测</a> <a href="{{ url_for('zy.index') }}" title="检测记录" target="_blank">检测记录</a> <a href="{{ url_for('zy.index') }}" title="关于" target="_blank">关于</a> </p>
+        </div>
+      <li class="piece-b"> 
+       <div class="bock01" name="Slider-2"> 
+        <i><img src="{{ url_for('static', filename='img/icon2.png') }}" alt="法人办事"></i>
+        <h3> <a href="{{ url_for('zy.index_visualization') }}" title="库塘监测大数据平台" target="_self" style="color: black">数据展示面板</a> </h3>
+        <p> <a href="{{ url_for('zy.index_visualization') }}" title="综合展示" target="_blank">综合展示</a><a href="{{ url_for('zy.index_visualization') }}" title="出口情况" target="_blank">出口情况</a> <a href="{{ url_for('zy.index_visualization') }}" title="表观消费" target="_blank">表观消费</a> <a href="{{ url_for('zy.index_visualization') }}" title="产量变化" target="_blank">产量变化</a>  </p>
+       </div>
+
+      <li class="piece-b">
+       <div class="bock01" name="Slider-4">
+        <i><img src="{{ url_for('static', filename='img/icon4.png') }}" alt="部门办事"></i>
+          <h3><a href="https://www.moa.gov.cn/" title="更多信息" target="_self" style="color: black">更多信息</a></h3>
+        <p> <a href="https://www.agridata.cn/#/home" title="农业农村部" target="_blank">数据获取</a> <a href="https://bz.ccpia.org.cn/index.html" title="智能化信息抽取" target="_blank">工业标准</a> </p>
+       </div>
+         </div>
+         </div>
+
+        </div>
+       </div> </li>
+     </ul>
+    </div>
+   </div>
+
+   <div id="main"> 
+    <div class="contain trout-region-info"> 
+     <div class="data-news-index classSkip"> 
+      <a  href="{{ url_for('zy.index') }}" title="果树智能分析系统展示" target="_blank"><h2>果树智能分析系统展示</h2></a>
+      <div class="row">
+       <div class="col-md-6 col-xs-12"> 
+        <div id="turn" class="turner pictuer-none"> 
+         <div class="turn-loading"></div> 
+         <ul class="turn-picer"> 
+         
+          <li> <a  href="{{ url_for('zy.index') }}" title="果树智能分析系统展示" target="_blank">
+            <div class="ImgCrop">
+             <img src="{{ url_for('static', filename='img/lunbo1.png') }}" alt="果树智能分析系统展示">
+            </div> 
+            <div class="img-lub-bock"> 
+             <span>要闻</span> 
+             <h4>果树智能分析系统展示</h4>
+            </div> </a> </li> 
+       
+          <li> <a href="https://zhuanlan.zhihu.com/p/644729267" title="我国梨产业进口数据统计" target="_blank"> 
+            <div class="ImgCrop">
+             <img src="{{ url_for('static', filename='img/lunbo2.png') }}" alt="我国梨产业进口数据统计">
+            </div> 
+            <div class="img-lub-bock"> 
+             <span>要闻</span> 
+             <h4>我国梨产业进口数据统计</h4> 
+            </div> </a> </li> 
+        
+          <li> <a href="https://baike.baidu.com/item/%E6%A2%A8%E9%94%88%E7%97%85/3758785" title="梨叶锈病展示" target="_blank"> 
+            <div class="ImgCrop">
+             <img src="{{ url_for('static', filename='img/lunbo3.jpg') }}" alt="梨叶锈病展示">
+            </div> 
+            <div class="img-lub-bock"> 
+             <span>要闻</span> 
+             <h4>梨叶锈病展示</h4> 
+            </div> </a> </li> 
+
+          <li> <a href="https://baike.baidu.com/item/%E8%9B%9E%E8%9D%93/24262" title="梨叶蛞蝓病展示" target="_blank"> 
+            <div class="ImgCrop">
+             <img src="{{ url_for('static', filename='img/lunbo4.png') }}" alt="梨叶蛞蝓病展示">
+            </div> 
+            <div class="img-lub-bock"> 
+             <span>要闻</span> 
+             <h4>梨叶蛞蝓病展示</h4> 
+            </div> </a> </li> 
+          <li> <a href="https://wenda.huabaike.com/zwyh/73932.html" title="梨叶卷叶病展示" target="_blank"> 
+            <div class="ImgCrop">
+             <img src="{{ url_for('static', filename='img/lunbo5.png') }}" alt="梨叶卷叶病展示">
+            </div> 
+            <div class="img-lub-bock"> 
+             <span>要闻</span> 
+             <h4>梨叶卷叶病展示</h4> 
+            </div> </a> </li> 
+         </ul> 
+        </div> 
+       </div> 
+       <div class="col-md-6 wd46 col-xs-12"> 
+        <ul class="today uli14 nowrapli list-date"> 
+         <li> <a href="https://www.pesticidenews.cn/zgny/nyyy/content/adb8634c-27f6-4732-a9ab-1e7674bc0ebb.html" title="农业种植技术：江苏梨的主要病虫害种类及防治方法" target="_blank"> <label>要闻<em></em></label>农业种植技术：冬春季设施蔬菜主要病虫害防控技术 </a> <span class="time">2024-02-05</span> </li>
+         <li> <a href="https://nyncj.suzhou.gov.cn/nlj/ywdt/202403/90107670d91242d8a1a7c09e8d682f84.shtml" title="苏州市农业农村局：春季梨树主要病虫害防治技术意见" target="_blank"> <label>要闻<em></em></label>苏州市农业农村局：春季梨树主要病虫害防治技术意见 </a> <span class="time">2024-03-12</span> </li> 
+         <li> <a href="https://www.kepuchina.cn/zn/nyjs/201911/t20191112_1152010.shtml" title="科普中国：梨树的病虫害防治" target="_blank"> <label>要闻<em></em></label>科普中国：梨树的病虫害防治</a> <span class="time">2024-03-10</span> </li> 
+         <li> <a href="https://www.86lsw.com/baike/sannong/58085.html" title="梨树的病虫害防治措施，注意保护天敌" target="_blank"> <label>要闻<em></em></label>梨树的病虫害防治措施，注意保护天敌 </a> <span class="time">2024-03-21</span> </li> 
+         <li> <a href="https://www.pesticidenews.cn/zgny/zwyy/content/e9bcf90d-d5f6-4671-8cc5-7363eb730e4c.html" title="中国农业网：梨树主要病虫害的周年防治措施" target="_blank"> <label>要闻<em></em></label>中国农业网：梨树主要病虫害的周年防治措施 </a> <span class="time">2024-04-05</span> </li> 
+        </ul> 
+       </div> 
+      </div> 
+     </div> 
+     <div class="messager index-newser classSkip trout-region-info"> 
+      <a  title="农业政策信息" target="_blank"><h2>农业政策信息</h2></a>
+      <ul class="photo-list"> 
+       <li> <a href="https://zwfw.moa.gov.cn/#/homeList" title="政务服务" target="_blank"> 
+         <div class="img-message">
+          <img src="{{ url_for('static', filename='img/publicity5.png') }}" alt="政务服务">
+         </div> 
+         <div class="message-content"> 
+          <i class="iconfont icon-yishenqinggongkai"></i> 
+          <p>政务服务</p> 
+         </div> </a> </li> 
+       <li> <a href="https://www.moa.gov.cn/gk/zfxxgkzl/gkzn/201712/t20171216_5986501.htm" title="应急指南" target="_blank"> 
+         <div class="img-message">
+          <img src="{{ url_for('static', filename='img/publicity2.png') }}" alt="公开指南">
+         </div> 
+         <div class="message-content"> 
+          <i class="iconfont icon-gongkaizhinan"></i> 
+          <p>公开指南</p> 
+         </div> </a> </li> 
+       <li> <a href="https://www.moa.gov.cn/" title="公开制度" target="_blank"> 
+         <div class="img-message">
+          <img src="{{ url_for('static', filename='img/publicity3.png') }}" alt="公开制度">
+         </div> 
+         <div class="message-content"> 
+          <i class="iconfont icon-gongkaineirong"></i> 
+          <p>公开制度</p> 
+         </div> </a> </li> 
+       <li> <a href="http://www.agri.cn/sj/" title="公开内容" target="_blank"> 
+         <div class="img-message">
+          <img src="{{ url_for('static', filename='img/publicity1.png') }}" alt="公开内容">
+         </div> 
+         <div class="message-content"> 
+          <i class="iconfont icon-gongkaizhidu"></i> 
+          <p>公开内容</p> 
+         </div> </a> </li> 
+       <li> <a href="http://zdscxx.moa.gov.cn:8080/nyb/pc/index.jsp" title="公开年报" target="_blank"> 
+         <div class="img-message">
+          <img src="{{ url_for('static', filename='img/publicity4.png') }}" alt="公开年报">
+         </div> 
+         <div class="message-content"> 
+          <i class="iconfont icon-gongkainianbao"></i> 
+          <p>公开年报</p> 
+         </div> </a> </li> 
+      
+     </div> 
+    </div> 
+   </div> 
+   <script src="{{ url_for('static', filename='js/footer.js') }}"></script>
+   <!-- 飘窗 --> 
+   <div class="piao"> 
+
+   
+   </div> 
+   <script src="{{ url_for('static', filename='js/jquery.min.1.12.4.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/ETUI3.min.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/jquery.ma.infinitypush.js') }}"></script>
+   <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+
+   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+   <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.share.min.js') }}"></script>
+   <script>
+      jQuery(document).ready(function() {
+        Main.init();
+        $('.re-sliders').owlCarousel({
+           items: 1,
+                margin: 0,
+                stagePadding: 0,
+                smartSpeed: 1000,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                nav: false
+        });
+        $('.re-sliders01').owlCarousel({
+                items: 1,
+                margin: 0,
+                stagePadding: 0,
+                smartSpeed: 1000,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                nav: false
+        });
+        $('.re-sliders02').owlCarousel({
+        items: 1,
+                margin: 0,
+                stagePadding: 0,
+                smartSpeed: 1000,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                nav: false
+        });
+        $('.normal-slider-bay').owlCarousel({
+                items: 1,
+                margin: 0,
+                stagePadding: 0,
+                smartSpeed: 1000,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                nav: true
+        });
+      });
+      $('#share-1').share();
+    </script> 
+   <script>
+      $(window).scroll(function(event) {
+        $(this).scrollTop() > 100 ? $(".xaunfu-header").addClass('fixed') : $(".xaunfu-header").removeClass('fixed');
+      });
+     
+    </script> 
+   <script>
+    window.onload = function() {
+  Particles.init({
+    selector: '.background'
+  });
+};
+      (function(id, t) {
+        if (!document.getElementById(id)) {
+          return false;
+        }
+        var doc = document,
+          auto = '',
+          oId = doc.getElementById(id),
+          IE = /msie (\d+\.\d)/i.test(navigator.userAgent),
+          num = 0,
+          bot = true,
+          setOpacity = function(obj, opacity) {
+            if (IE) {
+              obj.style.filter = 'Alpha(Opacity=' + (opacity * 100) + ')';
+            } else {
+              obj.style.opacity = opacity;
+            };
+          },
+          setBottom = function(obj, bottom) {
+            obj.style.bottom = bottom + 'px';
+          },
+          fideIn = function(obj, timeLimit) {
+            if (obj.style.display === 'none') {
+              obj.style.display = 'block';
+            };
+            setOpacity(obj, 0);
+            obj.style.zIndex = 1;
+            if (!timeLimit) {
+              timeLimit = 200;
+            };
+            var opacity = 0,
+              step = timeLimit / 20;
+            clearTimeout(fideInTime);
+            var fideInTime = setTimeout(function() {
+              bot = false;
+              if (opacity >= 1) {
+                bot = true;
+                return;
+              };
+              opacity += 1 / step;
+              setOpacity(obj, opacity);
+              fideInTime = setTimeout(arguments.callee, 20);
+            }, 20);
+          },
+          fideOut = function(obj, timeLimit) {
+            if (!timeLimit) {
+              timeLimit = 200;
+            };
+            setOpacity(obj, 1);
+            obj.style.zIndex = 0;
+            var opacity = 1,
+              step = timeLimit / 20;
+            clearTimeout(fideOutTime);
+            var fideOutTime = setTimeout(function() {
+              if (opacity <= 0) {
+                setOpacity(obj, 0);
+                return;
+              };
+              opacity -= 1 / step;
+              setOpacity(obj, opacity);
+              fideOutTime = setTimeout(arguments.callee, 20);
+
+            }, 20);
+          },
+          heightIn = function(obj, timeLimit) {
+            if (obj.style.display === 'none') {
+              obj.style.display = 'block';
+            };
+            setBottom(obj, -40);
+            if (!timeLimit) {
+              timeLimit = 200;
+            };
+            var bottom = -40,
+              step = timeLimit / 20;
+            clearTimeout(heightInTime);
+            var heightInTime = setTimeout(function() {
+              if (bottom >= 8) {
+                setBottom(obj, 8);
+                return;
+              };
+              bottom += 28 / step;
+              setBottom(obj, bottom);
+              heightInTime = setTimeout(arguments.callee, 20);
+            }, 20);
+          },
+          heightOut = function(obj, timeLimit) {
+            if (!timeLimit) {
+              timeLimit = 200;
+            };
+            setBottom(obj, 8);
+            var bottom = 8,
+              step = timeLimit / 20;
+            clearTimeout(heightOutTime);
+            var heightOutTime = setTimeout(function() {
+              if (bottom <= -40) {
+                setBottom(obj, -40);
+                return;
+              };
+              bottom -= 28 / step;
+              setBottom(obj, bottom);
+              heightOutTime = setTimeout(arguments.callee, 20);
+            }, 20);
+          },
+          getClass = function(oElem, strTagName, strClassName) {
+            var arrElements = (strTagName == '*' && oElem.all) ? oElem.all : oElem.getElementsByTagName(strTagName);
+            var returnArrElements = new Array();
+            var oRegExp = new RegExp('(^|\\s)' + strClassName + '($|\\s)');
+            for (var i = 0; i < arrElements.length; i++) {
+              if (oRegExp.test(arrElements[i].className)) {
+                returnArrElements.push(arrElements[i]);
+              }
+            }
+            return (returnArrElements);
+          },
+          createElement = function(tag, id, cla) {
+            var elem = document.createElement(tag);
+            if (id && id !== "") {
+              elem.id = id;
+            }
+            if (cla && cla !== "") {
+              elem.className = cla;
+            }
+            return elem;
+          },
+          showImg = function(n, b) {
+            var turnPic = getClass(oId, 'ul', 'turn-picer')[0];
+            var oLi = turnPic.getElementsByTagName('li');
+            var turnTit = getClass(oId, 'ul', 'turn-tit')[0];
+            var oLi2 = turnTit.getElementsByTagName('li');
+            var turnBtn = getClass(oId, 'div', 'turn-btn')[0];
+            var oSpan = turnBtn.getElementsByTagName('span')[0];
+            fideIn(oLi[n], 300);
+            heightIn(oLi2[n], 300);
+            oSpan.innerHTML = (n + 1) + ' / ' + oLi.length;
+            if (b == true) {
+              if (n == oLi.length - 1) {
+                fideOut(oLi[0], 300);
+                heightOut(oLi2[0], 300);
+              }
+              if (n < oLi.length - 1) {
+                fideOut(oLi[n + 1], 300);
+                heightOut(oLi2[n + 1], 300);
+              }
+            } else {
+              if (n > 0) {
+                fideOut(oLi[n - 1], 300);
+                heightOut(oLi2[n - 1], 300);
+              }
+              if (n == 0) {
+                fideOut(oLi[oLi.length - 1], 300);
+                heightOut(oLi2[oLi2.length - 1], 300);
+              }
+            }
+          },
+          addHtml = function() {
+            var oBg = createElement('div', '', 'turn-bg');
+            var oTit = createElement('ul', '', 'turn-tit');
+            var oBtn = createElement('div', '', 'turn-btn');
+            var turnPic = getClass(oId, 'ul', 'turn-picer')[0];
+            var oA = turnPic.getElementsByTagName('a');
+            var oImg = turnPic.getElementsByTagName('img');
+            for (var i = 0, len = oA.length; i < len; i++) {
+              oTit.innerHTML += '<li><a href="' + oA[i].href + '">' + oImg[i].title + '</a></li>';
+            }
+            oBtn.innerHTML = '<div class="lb"></div><div class="rb"></div><span></span>';
+            oId.appendChild(oBg);
+            oId.appendChild(oTit);
+            oId.appendChild(oBtn);
+          },
+          init = function() {
+            addHtml();
+            showImg(0);
+            var turnLoading = getClass(oId, 'div', 'turn-loading')[0];
+            oId.removeChild(turnLoading);
+            oId.onmouseover = function() {
+              clearInterval(auto);
+            };
+            oId.onmouseout = function() {
+              auto = setInterval(autoTurn, t * 1000);
+            };
+            var turnPic = getClass(oId, 'ul', 'turn-picer')[0];
+            var oLi = turnPic.getElementsByTagName('li');
+            var oLb = getClass(oId, 'div', 'lb')[0];
+            var oRb = getClass(oId, 'div', 'rb')[0];
+            oLb.onmouseover = function() {
+              this.style.backgroundPosition = '-12px 0';
+            }
+            oLb.onmouseout = function() {
+              this.style.backgroundPosition = '0 0';
+            }
+            oLb.onclick = function() {
+              if (!bot) {
+                return false;
+              }
+              if (num == 0) {
+                num = oLi.length - 1;
+              } else {
+                num = num - 1;
+              }
+              showImg(num, 1);
+            }
+            oRb.onmouseover = function() {
+              this.style.backgroundPosition = '-18px 0';
+            }
+            oRb.onmouseout = function() {
+              this.style.backgroundPosition = '-6px 0';
+            }
+            oRb.onclick = function() {
+              if (!bot) {
+                return false;
+              }
+              if (num == oLi.length - 1) {
+                num = 0;
+              } else {
+                num = num + 1;
+              }
+              showImg(num);
+            }
+          },
+          autoTurn = function() {
+            var turnPic = getClass(oId, 'ul', 'turn-picer')[0];
+            var oLi = turnPic.getElementsByTagName('li');
+            if (num == oLi.length - 1) {
+              num = 0;
+            } else {
+              num = num + 1;
+            }
+            showImg(num);
+          };
+        init();
+        auto = setInterval(autoTurn, t * 1000);
+      })('turn', 3);
+    </script> 
+   <!-- <script type="text/javascript">
+      $('.four-block-index li').hover(function() {
+        $(this).find('.xia-la').addClass('shower');
+        $(this).find('.bock01').addClass('showe01');
+        $(this).siblings('li').find('.xia-la').removeClass('shower');
+        $(this).siblings('li').find('.bock01').removeClass('showe01');
+      }, function() {
+        // $(this).find('.xia-la').removeClass('shower');
+      });
+      $('.xia-la').hover(function(){
+        
+      },function(){
+        $(this).removeClass('shower');
+      })
+      $(".menu").hover(function(){
+        
+      },function(){
+        $('.xia-la').removeClass('shower');
+        $('.bock01').removeClass('showe01');
+      })
+    </script> --> 
+   <script type="text/javascript">
+$(function () {
+            $(".weim").hover(function(){
+                $(".xia-wm").css("display", "block");
+            }, function(){
+                $(".xia-wm").css("display", "none");
+            })
+        })
+$(function () {
+            $(".piece-b").each(function () {
+                if ($(this).find(".xia-la").length > 0)
+                    Tabtarget.bind($(this), $(this).find(".xia-la"));
+            });
+        }); 
+     
+</script> 
+   <script type="text/javascript">
+            $(".close").click(function(){
+                $(".piao").css("display", "none");
+        })
+</script> 
+   <!-- 2023春节js --> 
+   <!-- <script type="text/javascript">
+        $(".happy-close").click(function(){
+            $(".happy").hide(100);
+        })
+        $(".happy").fadeOut(5000)
+    </script> --> 
+   <script type="text/javascript" src="{{ url_for('static', filename='js/ywlogin.js') }}"></script>
+  </div>
+  
+ </body>
+</html>

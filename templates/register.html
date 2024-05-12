@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block title %}
+    注册
+{% endblock %}
+{% block head %}
+
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+
+{% endblock %}
+{% block nav %}
+    <li class="layui-nav-item layui-this"><a href="/">主页</a></li>
+    <li class="layui-nav-item "><a href="{{ url_for('ident.class_upload') }}">上传</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('ident.class_record') }}">记录</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('forum.record') }}">论坛</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="{{ url_for('forum.public_question') }}">发帖</a></dd>
+        </dl>
+    </li>
+{% endblock %}
+{% block body %}
+    <div class="layui-container">
+        <div class="layui-row layui-col-space15" style="margin-top:10%">
+            <div class="layui-col-md6 layui-col-md-offset3">
+                <div class="layui-card">
+                    <div class="layui-card-header">用户注册</div>
+                    <div class="layui-card-body">
+                        <form class="layui-form" method="post" id="register-form">
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-email"></i></label>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input type="email" name="email" autocomplete="off" required
+                                           placeholder="请输入邮箱" class="layui-input">
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <div class="layui-row">
+                                    <div class="layui-col-xs8">
+                                        <label class="layui-form-label"><i
+                                                class="layui-icon layui-icon-vercode"></i></label>
+                                        <div class="layui-input-block">
+                                            <input type="text" name="captcha" lay-verify="vercode" class="layui-input"
+                                                   required id="email-input"
+                                                   placeholder="请输入验证码"/>
+                                        </div>
+                                    </div>
+                                    <div class="layui-col-xs2 layui-col-xs-offset1">
+                                        <button class="layui-btn huoqu" id="captcha-btn">发送验证码</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">
+                                    <i class="layui-icon layui-icon-username"></i>
+                                </label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" placeholder="请输入用户名" required
+                                           autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"> <i class="layui-icon layui-icon-password"></i></label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="password" lay-verify="required|pass" required
+                                           autocomplete="off"
+                                           placeholder="请输入密码" class="layui-input" minlength="6">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"> <i class="layui-icon layui-icon-password"></i></label>
+                                <div class="layui-input-block">
+                                    <input type="password" name="password_confirm" required
+                                           placeholder="请再次输入密码" id="repassword"
+                                           class="layui-input" minlength="6" onblur="checkpassword()">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"> <i class="layui-icon layui-icon-male"></i></label>
+                                <div class="layui-input-block">
+                                    <input type="radio" name="gender" value="male" title="男" checked>
+                                    <input type="radio" name="gender" value="female" title="女">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" type="submit">立即注册</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <p class="layui-text">已有账号?点击立即<a
+                                            href="{{ url_for('auth.login') }}">登录</a></p>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block footer %}
+
+    <script>
+
+        function checkpassword() {
+            var password = document.getElementById("password").value;
+            var repassword = document.getElementById("repassword").value;
+
+            if (password != repassword) {
+
+                layer.msg('密码与确认密码不匹配！');
+                document.getElementById('p1').value = "";
+                document.getElementById('p2').value = "";
+            }
+        }
+    </script>
+    <script>
+        var form = document.getElementById('register-form');
+        form.addEventListener('submit', function (event) {
+            // 防止表单默认提交行为
+            event.preventDefault();
+
+            // 发送表单数据到后端进行登录操作
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/auth/register', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        layer.msg('注册成功，自动跳转登录界面！');
+                        window.location.href = '/auth/login';
+                    } else {
+                        layer.msg(response.message);
+                    }
+                }
+            };
+            xhr.send('email=' + form.email.value + '&username=' + form.username.value + '&password=' + form.password.value + '&captcha=' + form.captcha.value + '&gender=' + form.gender.value);
+        });</script>
+
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block title %}
+    首页
+{% endblock %}
+{% block nav %}
+
+    <li class="layui-nav-item layui-this" ><a href="/"><b>主页</b></a></li>
+    <li class="layui-nav-item "><a href="{{ url_for('ident.class_upload') }}">上传</a></li>
+    <li class="layui-nav-item" ><a href="{{ url_for('ident.class_record') }}">记录</a></li>
+    <li class="layui-nav-item" ><a href="{{ url_for('forum.record') }}">论坛</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="{{ url_for('forum.public_question') }}">发帖</a></dd>
+        </dl>
+    </li>
+{% endblock %}
+{% block body %}
+
+    <div id="container">
+     <script srcsrc="{{ url_for('static', filename='js/header.js') }}"></script>
+    <div class="layui-container" style="margin-top:2%">
+        <div class="layui-row">
+            <div class="layui-col-md12">
+            </div>
+            <div class="layui-col-md12" style="margin-top:1%">
+                <div class="layui-carousel" id="test1">
+                    <div carousel-item >
+                        <div><img  src="{{ url_for('static', filename='img/lunbo_1.png') }}"></div>
+                        <div><img  src="{{ url_for('static', filename='img/lunbo_4.png') }}"></div>
+                        <div><img   src="{{ url_for('static', filename='img/lunbo6.png') }}"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-row">
+            <div class="layui-col-md12" style="margin-top:2%">
+                <ul class="layui-timeline">
+
+
+                    <p class=" layui-font-green   layui-text "style="font-size: 16px;color：#5FB878;font-family: 宋体;font-size: 20px" >
+                        <b>进入系统请先登录账号，登陆后您可以通过点击导航栏中的上传,该系统可以对果树的所得病害进行智能分析,并给予您合理的防止建议。</b></p>
+
+
+                    <li class="layui-timeline-item">
+            <br>
+                        <div class="nkngxqdwz" style="height:27px; line-height:27px;font-family: 宋体">
+<span style=" display:block;border-left:#006666 solid 6px; padding-left:10px; height:20px; line-height:20px;font-size:20px; float:left; ">
+    <b class="pc_x"><legend>识别工具</legend></b>
+
+</span>
+                </div>
+
+                    <div class="layui-timeline-content layui-text">
+                       <hr class="layui-border-green">
+
+                            <p style="font-size:20px;font-family: 宋体">
+                               果树病害分类工具：这个工具可以帮助您判断果树所得病害的种类。  </p>
+                           <p style="font-size:20px;font-family: 宋体">  根据标准号：GB/T 23416.2-2009 蔬菜病虫害安全防治技术规范 第2部分：茄果类,来对果树进行病害分析。
+                                <a href="{{ url_for('static', filename='other/GBT.pdf') }}" style="font-family: Arial, sans-serif;font-weight: bold;color: blue; ">点击查看</a></p>
+                        <p style="font-size:20px;font-family: 宋体">  下面以梨树为例,主要介绍梨树常见的病害：
+                                </p>
+
+
+
+                   <p>  <i class="layui-icon layui-icon-rate-half" style="font-size: 15px; color: #FF5722;font-family: 宋体"> 锈病（Rust）：通常指的是植物叶片上出现的一种由真菌引起的疾病，其名称源自于叶片上出现的红褐色或橙黄色的斑点，有时也会产生像金属锈蚀一样的外观。这些真菌通常属于锈菌科（Pucciniaceae），而其名称则因为其外观而得名。</i> </p>
+                  <p>      <i class="layui-icon layui-icon-rate-half" style="font-size: 15px; color: #FF5722;font-family: 宋体">蛞蝓病（Slug）：通常指的是蔬菜园和农田中蛞蝓造成的害虫问题，而不是某种特定的疾病。蛞蝓是一类软体动物，常见于潮湿的环境中，它们以吃植物为生，可能对庄稼和花园中的植物造成严重的损害。</i></p>
+                    <p>    <i class="layui-icon layui-icon-rate-half" style="font-size: 15px; color: #FF5722;font-family: 宋体">卷叶病（Curl）：通常表现为植物叶片出现卷曲、变形和颜色变化等症状。卷叶病的病因可以是多种因素引起的，其中包括病毒、真菌、细菌、环境压力和营养不足等。不同类型的植物可能受到不同类型的卷叶病病原体的影响。</i></p>
+
+
+
+
+
+                    <li class="layui-timeline-item">
+
+                        <div class="nkngxqdwz" style="height:27px; line-height:27px;">
+                <span style=" display:block;border-left:#006666 solid 6px; padding-left:10px; height:20px; line-height:20px;font-size:20px; float:left; ">
+                    <b class="pc_x"><legend>导致病害的关键因素</legend></b>
+
+                </span>
+                </div>
+
+
+
+
+                 <div class="layui-timeline-content layui-text">
+                       <hr class="layui-border-green">
+
+                            <p style="font-size:20px;font-family: 宋体"> <b>环境条件</b>：环境因素对果树疾病的发生和发展起着至关重要的作用。例如，高湿度和潮湿的气候条件有利于真菌和细菌等病原体的生长和传播。温度变化、气候极端、光照不足或过度、土壤湿度过高等也可能导致植株抵抗力下降，增加植株受病害侵袭的风险。
+
+
+
+                            </p>
+                            <p style="font-size:20px;font-family: 宋体">
+                                 <b>病原体存在 </b>：病原体的存在和传播是导致果树疾病的直接原因。真菌、细菌、病毒等微生物通过风、水、昆虫、工具等途径传播到果树上，引发病害。
+                            </p>
+                            <p style="font-size:20px;font-family: 宋体">
+                                <b>植物抗性 </b>：果树品种的抗病能力是决定其是否易受病害侵袭的重要因素。一些抗病性较强的果树品种能够更好地抵抗病原体的侵袭，减少疾病发生的可能性。
+                            </p>
+
+
+
+                    <li class="layui-timeline-item">
+
+                        <div class="nkngxqdwz" style="height:27px; line-height:27px;">
+<span style=" display:block;border-left:#006666 solid 6px; padding-left:10px; height:20px; line-height:20px;font-size:20px; float:left; ">
+    <b class="pc_x"><legend>果树病害防治指南</legend></b>
+
+</span>
+        </div>
+                <div class="layui-timeline-content layui-text">
+                    <hr class="layui-border-green">
+
+                            <p style="font-size:20px;font-family: 宋体">
+
+
+                                <b>选择抗病品种</b>：优先选择抗病性较强的果树品种，以降低叶片疾病发生的风险。
+                            </p>
+                            <p style="font-size:20px;font-family: 宋体">
+                                <b>保持植株健康</b>：保持果树的健康状态，包括合理施肥、适度灌溉、及时清理落叶和病变部位等，有助于提高植株抵抗力，减少病害发生。
+                            </p>
+                            <p style="font-size:20px;font-family: 宋体">
+                                <b>定期检查和管理</b>：定期检查果树叶片和果实的健康情况，如发现异常症状，立即采取控制措施，包括清除受感染部位、使用化学或生物防治剂等，以防止病害的传播。
+                            </p>
+                           <br>
+
+                   </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    <script>
+        layui.use('carousel', function () {
+            var carousel = layui.carousel;
+            //建造实例
+            carousel.render({
+                elem: '#test1'
+                , width: '100%' //设置容器宽度
+
+                , arrow: 'always' //始终显示箭头
+                //,anim: 'updown' //切换动画方式
+            });
+
+            //图片轮播
+  carousel.render({
+    elem: '#test10'
+    ,width: '778px'
+    ,height: '440px'
+    ,interval: 5000
+  });
+        });
+
+    </script>
+{% endblock %}

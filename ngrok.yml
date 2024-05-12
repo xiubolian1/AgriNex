@@ -1,0 +1,8 @@
+version: "2"
+authtoken: 2WtEYCZOXiNN2rtoKcAfwP7MZh1_3WKpzExY6e38YNpZgBmLA
+region: ap
+tunnels:
+  test:
+    addr: 5000
+    proto: http
+    

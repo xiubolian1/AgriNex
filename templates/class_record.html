@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}
+    识别
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block nav %}
+    <li class="layui-nav-item"><a href="/">主页</a></li>
+    <li class="layui-nav-item "><a href="{{ url_for('ident.class_upload') }}">上传</a></li>
+    <li class="layui-nav-item  layui-this"><a href="{{ url_for('ident.class_record') }}">记录</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('forum.public_question') }}">论坛</a></li>
+{% endblock %}
+{% block body %}
+    {% if user %}
+        <div class="layui-container" style="margin-top:2%">
+            <div class="layui-row">
+                <div class="layui-col-md10 layui-col-md-offset1">
+                    <table class="layui-table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">原图</th>
+                            <th scope="col">分割图</th>
+                            <th scope="col">类别</th>
+                            <th scope="col">精度</th>
+                            <th scope="col">时间</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for img in user_img_list %}
+                            <tr>
+                                <td scope="row">{{ img.index }}</td>
+                                <td><img src="image/{{ img.user_img_path }}"
+                                         class=" up_img img-thumbnail"
+                                         alt="{{ img.img_class }}">
+                                </td>
+                                <td><img src="image/{{ img.user_img_path_1 }}"
+                                         class=" up_img img-thumbnail"
+                                         alt="{{ img.img_class }}">
+                                </td>
+                                <td>{{ img.img_class }}</td>
+                                <td>{{ img.img_acc }}%</td>
+                                <td>{{ img.img_ident_datetime }}</td>
+                             <input hidden="hidden" value="{{ img.id }}" id="id">
+                                    <td><a href="#" class="layui-btn layui-btn-primary  layui-btn-x" onclick="deleteData()">删除</a></td>
+                            </tr>
+                        {% endfor %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+        </div>
+    {% else %}
+        <div class="layui-container" style="margin-top:2%">
+            <div class="layui-row">
+                <div class="layui-col-md10 layui-col-md-offset1">
+                    <div class="layui-panel">
+                        <div style="padding: 30px;"><p class="layui-text">
+                            很抱歉，请进行<a class="layui-font-blue " href="{{ url_for('auth.login') }}">登录</a>！</p></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+     <script>
+        function deleteData() {
+            layer.confirm('确认删除这条记录吗？', {
+                btn: ['确认', '取消'] //
+            }, function () {
+                //按钮【按钮一】的回调
+                var dataId = document.getElementById("id").value;
+                fetch(`/ident/del_class_record/${dataId}`, {
+                    method: 'DELETE',
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        layer.msg(data.message);
+                        setTimeout(function () {
+                            window.location.href = '/ident/class_record';
+                        }, 500);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert('An error occurred while deleting the data.');
+                    });
+            }, function (index) {
+                //按钮【按钮二】的回调
+                layer.msg('取消')
+            });
+        }
+
+
+    </script>
+{% endblock %}

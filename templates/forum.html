@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}
+    论坛
+{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forum.css') }}">
+{% endblock %}
+{% block nav %}
+    <li class="layui-nav-item"><a href="/">主页</a></li>
+    <li class="layui-nav-item "><a href="{{ url_for('ident.class_upload') }}">上传</a></li>
+    <li class="layui-nav-item  "><a href="{{ url_for('ident.class_record') }}">记录</a></li>
+    <li class="layui-nav-item layui-this"><a href="{{ url_for('forum.record') }}">论坛</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="{{ url_for('forum.public_question') }}">发帖</a></dd>
+        </dl>
+    </li>
+{% endblock %}
+{% block body %}
+    {% if user %}
+        <div class="layui-container">
+            <div class="layui-row" style="margin-top:3%">
+                <div class="layui-col-md10 layui-col-md-offset1  clearfix">
+
+                    <div class="fl">
+                        <a
+                                href="{{ url_for('forum.public_question') }} ">
+                            <button type="submit" class="layui-btn" title="发帖"><i
+                                    class="layui-icon layui-icon-addition"
+                                    style="font-size: 30px; color: #FFF;"></i></button>
+                        </a>
+
+                    </div>
+                    <form class="form-inline fr" method="GET" action="{{ url_for('forum.search') }}">
+
+                        <div class="fl">
+                            <input type="search" required name="q" lay-verify="required" placeholder="关键字"
+                                   autocomplete="off"
+                                   class="layui-input" style="width: 100%"></div>
+                        <div class="fr">
+                            <button type="submit" class="layui-btn">搜索</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-col-md10 layui-col-md-offset1" style="margin-top:2%">
+                    <ul class="question-ul">
+                        {% for question in questions %}
+                            <li>
+                                    <div class="side-question">
+                                        <img class="side-question-avatar"
+                                             src="avatar/{{ question.author.avatar}}">
+                                    </div>
+                                <div class="question-main">
+                                    <div class="question-title"><a
+                                            href="{{ url_for('forum.qa_detail', qa_id=question.id) }}">{{ question.title }}</a>
+                                    </div>
+                                    <div class="question-content">{{ question.content }}</div>
+                                    <div class="question-detail">
+                                        <span class="question-author">{{ question.author.username }}</span>
+                                        <span class="question-time">{{ question.create_time }}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="layui-container" style="margin-top:2%">
+            <div class="layui-row">
+                <div class="layui-col-md10 layui-col-md-offset1">
+                    <div class="layui-panel">
+                        <div style="padding: 30px;"><p class="layui-text">
+                            很抱歉，请进行<a class="layui-font-blue " href="{{ url_for('auth.login') }}">登录</a>！</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}
+{% block footer %}
+
+{% endblock %}

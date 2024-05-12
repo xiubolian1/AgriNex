@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block title %}
+    个人中心
+{% endblock %}
+{% block head %}
+{% endblock %}
+{% block nav %}
+    <li class="layui-nav-item"><a href="/">主页</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('ident.class_upload') }}">上传</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('ident.class_record') }}">记录</a></li>
+    <li class="layui-nav-item"><a href="{{ url_for('forum.record') }}">论坛</a>
+        <dl class="layui-nav-child"> <!-- 二级菜单 -->
+            <dd><a href="{{ url_for('forum.public_question') }}">发帖</a></dd>
+        </dl>
+    </li>
+
+{% endblock %}
+{% block body %}
+    <div class="layui-container">
+        <div class="layui-row layui-col-space15" style="margin-top:10%">
+            <div class="layui-col-md6 layui-col-md-offset3">
+                <div class="layui-card">
+                    <div class="layui-card-header">个人中心</div>
+                    <div class="layui-card-body">
+                        <form class="layui-form" method="POST" enctype="multipart/form-data">
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" style="margin-top: 2%;"> <i
+                                        class="layui-icon layui-icon-face-smile-fine"></i></label>
+                                <img style="margin: 0 2%;width: 50px; "
+                                     src="avatar/{{ user_dict.avatar }}">
+                                <input type="file" class=" layui-btn layui-btn-primary " aria-label="Upload"
+                                       name="file[]" accept="image/*">
+                            </div>
+
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label" for="email"> <i class="layui-icon layui-icon-email"></i></label>
+                                <div class="layui-input-block">
+                                    <input type="email" lay-verify="required|username" autocomplete="off"
+                                           required
+                                           placeholder="{{ user_dict.user_email }}"
+                                           class="layui-input " disabled>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"> <i
+                                        class="layui-icon layui-icon-username"></i></label>
+                                <div class="layui-input-block">
+                                    <input type="text" name="username" lay-verify="required|username" autocomplete="off"
+                                           required
+                                           class="layui-input " value="{{ user_dict.user_username }}">
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"> <i class="layui-icon layui-icon-male"></i></label>
+                                <div class="layui-input-block">
+                                    {% if user_dict.user_gender=='male' %}
+                                        <input type="radio"  title="男" checked>
+                                        <input type="radio"  title="女" disabled>
+                                    {% else %}
+                                        <input type="radio"  title="男" disabled>
+                                        <input type="radio"  title="女" checked>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" type="submit">立即修改</button>
+                                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+{% endblock %}
